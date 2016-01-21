@@ -16,6 +16,9 @@
 		652B38831C511D61007F89E1 /* AlbumListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B38821C511D61007F89E1 /* AlbumListTableViewCell.swift */; };
 		652B38851C512C12007F89E1 /* PreviewCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B38841C512C12007F89E1 /* PreviewCollectionViewController.swift */; };
 		652B38871C512C6D007F89E1 /* PreviewPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B38861C512C6D007F89E1 /* PreviewPhotoCollectionViewCell.swift */; };
+		652B38891C5138C8007F89E1 /* BrowseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B38881C5138C8007F89E1 /* BrowseCollectionViewCell.swift */; };
+		652B388B1C5138F6007F89E1 /* BrowseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B388A1C5138F6007F89E1 /* BrowseCollectionViewController.swift */; };
+		652B388E1C5144F9007F89E1 /* BrowsePhotoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B388D1C5144F9007F89E1 /* BrowsePhotoDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,9 @@
 		652B38821C511D61007F89E1 /* AlbumListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumListTableViewCell.swift; sourceTree = "<group>"; };
 		652B38841C512C12007F89E1 /* PreviewCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewCollectionViewController.swift; sourceTree = "<group>"; };
 		652B38861C512C6D007F89E1 /* PreviewPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		652B38881C5138C8007F89E1 /* BrowseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseCollectionViewCell.swift; sourceTree = "<group>"; };
+		652B388A1C5138F6007F89E1 /* BrowseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseCollectionViewController.swift; sourceTree = "<group>"; };
+		652B388D1C5144F9007F89E1 /* BrowsePhotoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowsePhotoDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +89,7 @@
 		652B385D1C511C2F007F89E1 /* NCPhotoViewer */ = {
 			isa = PBXGroup;
 			children = (
+				652B388C1C51447E007F89E1 /* Protocols */,
 				652B38811C511D4B007F89E1 /* Views */,
 				652B387E1C511C47007F89E1 /* Controllers */,
 				652B385E1C511C2F007F89E1 /* AppDelegate.swift */,
@@ -108,6 +115,7 @@
 			children = (
 				652B387F1C511C71007F89E1 /* AlbumListTableViewController.swift */,
 				652B38841C512C12007F89E1 /* PreviewCollectionViewController.swift */,
+				652B388A1C5138F6007F89E1 /* BrowseCollectionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -117,8 +125,17 @@
 			children = (
 				652B38821C511D61007F89E1 /* AlbumListTableViewCell.swift */,
 				652B38861C512C6D007F89E1 /* PreviewPhotoCollectionViewCell.swift */,
+				652B38881C5138C8007F89E1 /* BrowseCollectionViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		652B388C1C51447E007F89E1 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				652B388D1C5144F9007F89E1 /* BrowsePhotoDelegate.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,7 +239,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				652B38891C5138C8007F89E1 /* BrowseCollectionViewCell.swift in Sources */,
 				652B38871C512C6D007F89E1 /* PreviewPhotoCollectionViewCell.swift in Sources */,
+				652B388B1C5138F6007F89E1 /* BrowseCollectionViewController.swift in Sources */,
+				652B388E1C5144F9007F89E1 /* BrowsePhotoDelegate.swift in Sources */,
 				652B385F1C511C2F007F89E1 /* AppDelegate.swift in Sources */,
 				652B38851C512C12007F89E1 /* PreviewCollectionViewController.swift in Sources */,
 				652B38801C511C71007F89E1 /* AlbumListTableViewController.swift in Sources */,

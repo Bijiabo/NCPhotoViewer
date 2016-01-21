@@ -1,44 +1,62 @@
 //
-//  PreviewCollectionViewController.swift
+//  BrowseCollectionViewController.swift
 //  NCPhotoViewer
 //
-//  Created by huchunbo on 16/1/21.
+//  Created by huchunbo on 16/1/22.
 //  Copyright © 2016年 Bijiabo. All rights reserved.
 //
 
 import UIKit
 import Photos
 
-private let reuseIdentifier = "photoCell"
-private let numberOfCellsInLine: Int = 5
-private let cellSpacing: CGFloat = 4.0
+private let reuseIdentifier = "browseCell"
+private let cellSpacing: CGFloat = 0
 
-class PreviewCollectionViewController: UICollectionViewController {
-    
+class BrowseCollectionViewController: UICollectionViewController {
+
     var assetsCollection: PHAssetCollection?
     var data: PHFetchResult!
     let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-
+    var startIndexPath: NSIndexPath?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         _setupData()
-        
+
         // setup flow layout
         flowLayout.itemSize = CGSize(width: 100, height: 100)
-        flowLayout.scrollDirection = UICollectionViewScrollDirection.Vertical
+        flowLayout.scrollDirection = UICollectionViewScrollDirection.Horizontal
         flowLayout.minimumInteritemSpacing = cellSpacing
         flowLayout.minimumLineSpacing = cellSpacing
         flowLayout.sectionInset = UIEdgeInsets(top: cellSpacing, left: cellSpacing, bottom: cellSpacing, right: cellSpacing)
         collectionView?.collectionViewLayout = flowLayout
-
+        
+        collectionView?.pagingEnabled = true
+        collectionView?.contentInset = UIEdgeInsetsZero
+        automaticallyAdjustsScrollViewInsets = false
+        
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        self.clearsSelectionOnViewWillAppear = false
+        
+        if let startIndexPath = startIndexPath {
+            collectionView?.scrollToItemAtIndexPath(startIndexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredHorizontally, animated: false)
+        }
 
         // Register cell classes
-        // self.collectionView!.registerClass(PreviewPhotoCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        // self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        updateNavigationBarDisplay(display: false)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        updateNavigationBarDisplay(display: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,15 +88,23 @@ class PreviewCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PreviewPhotoCollectionViewCell
-        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! BrowseCollectionViewCell
+        let currentData = data.objectAtIndex(indexPath.row) as! PHAsset
         let targetSize = CGSize(width: 120.0, height: 120.0)
-        PHImageManager.defaultManager().requestImageForAsset(data.objectAtIndex(indexPath.row) as! PHAsset, targetSize: targetSize, contentMode: PHImageContentMode.AspectFill, options: nil, resultHandler: { (image, info: [NSObject : AnyObject]?) -> Void in
+        PHImageManager.defaultManager().requestImageForAsset(currentData, targetSize: targetSize, contentMode: PHImageContentMode.AspectFill, options: nil, resultHandler: { (image, info: [NSObject : AnyObject]?) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 cell.image = image!
             })
             
         })
+        
+        if let creationDate = currentData.creationDate {
+            cell.date = creationDate
+        }
+        cell.width = currentData.pixelWidth
+        cell.height = currentData.pixelHeight
+        
+        cell.browseDelegate = self
     
         return cell
     }
@@ -113,26 +139,25 @@ class PreviewCollectionViewController: UICollectionViewController {
     
     }
     */
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        guard let segueIdentifier = segue.identifier else {return}
-        switch segueIdentifier {
-        case "linkToBrowse":
-            guard let targetVC = segue.destinationViewController as? BrowseCollectionViewController else {return}
-            guard let cell = sender as? PreviewPhotoCollectionViewCell else {return}
-            guard let indexPath = collectionView?.indexPathForCell(cell) else {return}
-            targetVC.assetsCollection = assetsCollection
-            targetVC.startIndexPath = indexPath
-        default:
-            break
+
+    func toggleNavigationBarDisplay() {
+        if navigationController?.navigationBar.alpha == 0 {
+            updateNavigationBarDisplay(display: true)
+        } else {
+            updateNavigationBarDisplay(display: false)
         }
     }
-
+    
+    func updateNavigationBarDisplay(display display: Bool) {
+        UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations: { () -> Void in
+            self.navigationController?.navigationBar.alpha = display ? 1.0 : 0.0
+            }, completion: nil)
+    }
 }
 
 // MARK: - data functions
 
-extension PreviewCollectionViewController {
+extension BrowseCollectionViewController {
     
     private func _setupData() {
         guard let assetsCollection = assetsCollection else {return}
@@ -148,17 +173,25 @@ extension PreviewCollectionViewController {
 
 // MARK: - flow layout delegate
 
-extension PreviewCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension BrowseCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        
-        let x = (view.frame.size.width - CGFloat(numberOfCellsInLine + 2) * flowLayout.minimumLineSpacing  ) / CGFloat(numberOfCellsInLine)
-        return CGSize(width: x, height: x)
+        return CGSize(width: view.frame.width, height: view.frame.height)
     }
     /*
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        let x: CGFloat = 4.0
-        return UIEdgeInsets(top: x, left: x, bottom: x, right: x)
+    let x: CGFloat = 4.0
+    return UIEdgeInsets(top: x, left: x, bottom: x, right: x)
     }
     */
 }
+
+extension BrowseCollectionViewController: BrowsePhotoDelegate {
+    
+    func tapPreviewView() {
+        toggleNavigationBarDisplay()
+    }
+    
+}
+
+
