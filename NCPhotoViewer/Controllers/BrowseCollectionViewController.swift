@@ -90,7 +90,7 @@ class BrowseCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! BrowseCollectionViewCell
         let currentData = data.objectAtIndex(indexPath.row) as! PHAsset
-        let targetSize = CGSize(width: 120.0, height: 120.0)
+        let targetSize = view.bounds.size
         PHImageManager.defaultManager().requestImageForAsset(currentData, targetSize: targetSize, contentMode: PHImageContentMode.AspectFill, options: nil, resultHandler: { (image, info: [NSObject : AnyObject]?) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 cell.image = image!
