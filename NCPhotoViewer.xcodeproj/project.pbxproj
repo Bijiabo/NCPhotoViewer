@@ -1,0 +1,401 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		652B385F1C511C2F007F89E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B385E1C511C2F007F89E1 /* AppDelegate.swift */; };
+		652B38611C511C2F007F89E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B38601C511C2F007F89E1 /* ViewController.swift */; };
+		652B38641C511C2F007F89E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 652B38621C511C2F007F89E1 /* Main.storyboard */; };
+		652B38661C511C2F007F89E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 652B38651C511C2F007F89E1 /* Assets.xcassets */; };
+		652B38691C511C2F007F89E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 652B38671C511C2F007F89E1 /* LaunchScreen.storyboard */; };
+		652B38741C511C2F007F89E1 /* NCPhotoViewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B38731C511C2F007F89E1 /* NCPhotoViewerTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		652B38701C511C2F007F89E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 652B38531C511C2F007F89E1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 652B385A1C511C2F007F89E1;
+			remoteInfo = NCPhotoViewer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		652B385B1C511C2F007F89E1 /* NCPhotoViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NCPhotoViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		652B385E1C511C2F007F89E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		652B38601C511C2F007F89E1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		652B38631C511C2F007F89E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		652B38651C511C2F007F89E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		652B38681C511C2F007F89E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		652B386A1C511C2F007F89E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		652B386F1C511C2F007F89E1 /* NCPhotoViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NCPhotoViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		652B38731C511C2F007F89E1 /* NCPhotoViewerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCPhotoViewerTests.swift; sourceTree = "<group>"; };
+		652B38751C511C2F007F89E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		652B38581C511C2F007F89E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		652B386C1C511C2F007F89E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		652B38521C511C2F007F89E1 = {
+			isa = PBXGroup;
+			children = (
+				652B385D1C511C2F007F89E1 /* NCPhotoViewer */,
+				652B38721C511C2F007F89E1 /* NCPhotoViewerTests */,
+				652B385C1C511C2F007F89E1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		652B385C1C511C2F007F89E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				652B385B1C511C2F007F89E1 /* NCPhotoViewer.app */,
+				652B386F1C511C2F007F89E1 /* NCPhotoViewerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		652B385D1C511C2F007F89E1 /* NCPhotoViewer */ = {
+			isa = PBXGroup;
+			children = (
+				652B385E1C511C2F007F89E1 /* AppDelegate.swift */,
+				652B38601C511C2F007F89E1 /* ViewController.swift */,
+				652B38621C511C2F007F89E1 /* Main.storyboard */,
+				652B38651C511C2F007F89E1 /* Assets.xcassets */,
+				652B38671C511C2F007F89E1 /* LaunchScreen.storyboard */,
+				652B386A1C511C2F007F89E1 /* Info.plist */,
+			);
+			path = NCPhotoViewer;
+			sourceTree = "<group>";
+		};
+		652B38721C511C2F007F89E1 /* NCPhotoViewerTests */ = {
+			isa = PBXGroup;
+			children = (
+				652B38731C511C2F007F89E1 /* NCPhotoViewerTests.swift */,
+				652B38751C511C2F007F89E1 /* Info.plist */,
+			);
+			path = NCPhotoViewerTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		652B385A1C511C2F007F89E1 /* NCPhotoViewer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 652B38781C511C2F007F89E1 /* Build configuration list for PBXNativeTarget "NCPhotoViewer" */;
+			buildPhases = (
+				652B38571C511C2F007F89E1 /* Sources */,
+				652B38581C511C2F007F89E1 /* Frameworks */,
+				652B38591C511C2F007F89E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NCPhotoViewer;
+			productName = NCPhotoViewer;
+			productReference = 652B385B1C511C2F007F89E1 /* NCPhotoViewer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		652B386E1C511C2F007F89E1 /* NCPhotoViewerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 652B387B1C511C2F007F89E1 /* Build configuration list for PBXNativeTarget "NCPhotoViewerTests" */;
+			buildPhases = (
+				652B386B1C511C2F007F89E1 /* Sources */,
+				652B386C1C511C2F007F89E1 /* Frameworks */,
+				652B386D1C511C2F007F89E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				652B38711C511C2F007F89E1 /* PBXTargetDependency */,
+			);
+			name = NCPhotoViewerTests;
+			productName = NCPhotoViewerTests;
+			productReference = 652B386F1C511C2F007F89E1 /* NCPhotoViewerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		652B38531C511C2F007F89E1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Bijiabo;
+				TargetAttributes = {
+					652B385A1C511C2F007F89E1 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					652B386E1C511C2F007F89E1 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 652B385A1C511C2F007F89E1;
+					};
+				};
+			};
+			buildConfigurationList = 652B38561C511C2F007F89E1 /* Build configuration list for PBXProject "NCPhotoViewer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 652B38521C511C2F007F89E1;
+			productRefGroup = 652B385C1C511C2F007F89E1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				652B385A1C511C2F007F89E1 /* NCPhotoViewer */,
+				652B386E1C511C2F007F89E1 /* NCPhotoViewerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		652B38591C511C2F007F89E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				652B38691C511C2F007F89E1 /* LaunchScreen.storyboard in Resources */,
+				652B38661C511C2F007F89E1 /* Assets.xcassets in Resources */,
+				652B38641C511C2F007F89E1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		652B386D1C511C2F007F89E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		652B38571C511C2F007F89E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				652B38611C511C2F007F89E1 /* ViewController.swift in Sources */,
+				652B385F1C511C2F007F89E1 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		652B386B1C511C2F007F89E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				652B38741C511C2F007F89E1 /* NCPhotoViewerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		652B38711C511C2F007F89E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 652B385A1C511C2F007F89E1 /* NCPhotoViewer */;
+			targetProxy = 652B38701C511C2F007F89E1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		652B38621C511C2F007F89E1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				652B38631C511C2F007F89E1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		652B38671C511C2F007F89E1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				652B38681C511C2F007F89E1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		652B38761C511C2F007F89E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		652B38771C511C2F007F89E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		652B38791C511C2F007F89E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NCPhotoViewer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bijiabo.NCPhotoViewer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		652B387A1C511C2F007F89E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NCPhotoViewer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bijiabo.NCPhotoViewer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		652B387C1C511C2F007F89E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = NCPhotoViewerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bijiabo.NCPhotoViewerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NCPhotoViewer.app/NCPhotoViewer";
+			};
+			name = Debug;
+		};
+		652B387D1C511C2F007F89E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = NCPhotoViewerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bijiabo.NCPhotoViewerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NCPhotoViewer.app/NCPhotoViewer";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		652B38561C511C2F007F89E1 /* Build configuration list for PBXProject "NCPhotoViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				652B38761C511C2F007F89E1 /* Debug */,
+				652B38771C511C2F007F89E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		652B38781C511C2F007F89E1 /* Build configuration list for PBXNativeTarget "NCPhotoViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				652B38791C511C2F007F89E1 /* Debug */,
+				652B387A1C511C2F007F89E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		652B387B1C511C2F007F89E1 /* Build configuration list for PBXNativeTarget "NCPhotoViewerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				652B387C1C511C2F007F89E1 /* Debug */,
+				652B387D1C511C2F007F89E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 652B38531C511C2F007F89E1 /* Project object */;
+}
