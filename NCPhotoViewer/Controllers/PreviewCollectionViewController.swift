@@ -15,8 +15,10 @@ private let cellSpacing: CGFloat = 4.0
 
 class PreviewCollectionViewController: UICollectionViewController {
     
+    var momentMode: Bool = false
     var assetsCollection: PHAssetCollection?
     var data: PHFetchResult!
+    var subData: [PHFetchResult] = [PHFetchResult]()
     let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
 
     override func viewDidLoad() {
@@ -30,15 +32,14 @@ class PreviewCollectionViewController: UICollectionViewController {
         flowLayout.minimumInteritemSpacing = cellSpacing
         flowLayout.minimumLineSpacing = cellSpacing
         flowLayout.sectionInset = UIEdgeInsets(top: cellSpacing, left: cellSpacing, bottom: cellSpacing, right: cellSpacing)
+        if momentMode {
+            flowLayout.headerReferenceSize = CGSize(width: view.frame.width, height: 50.0)
+            flowLayout.sectionHeadersPinToVisibleBounds = true
+        }
         collectionView?.collectionViewLayout = flowLayout
 
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        // self.collectionView!.registerClass(PreviewPhotoCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        self.clearsSelectionOnViewWillAppear = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,27 +61,58 @@ class PreviewCollectionViewController: UICollectionViewController {
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        if momentMode {
+            return data.count
+        } else {
+            return 1
+        }
     }
-
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return data.count
+        if momentMode {
+            return subData[section].count
+        } else {
+            return data.count
+        }
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PreviewPhotoCollectionViewCell
+        let currentAsset = momentMode ? subData[indexPath.section].objectAtIndex(indexPath.row) as! PHAsset : data.objectAtIndex(indexPath.row) as! PHAsset
         
         let targetSize = CGSize(width: 120.0, height: 120.0)
-        PHImageManager.defaultManager().requestImageForAsset(data.objectAtIndex(indexPath.row) as! PHAsset, targetSize: targetSize, contentMode: PHImageContentMode.AspectFill, options: nil, resultHandler: { (image, info: [NSObject : AnyObject]?) -> Void in
+        PHImageManager.defaultManager().requestImageForAsset(currentAsset, targetSize: targetSize, contentMode: PHImageContentMode.AspectFill, options: nil, resultHandler: { (image, info: [NSObject : AnyObject]?) -> Void in
+            guard let image = image else {return}
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                cell.image = image!
+                cell.image = image
             })
             
         })
     
         return cell
+    }
+    
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        
+        if kind == UICollectionElementKindSectionHeader {
+            let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "previewHeaderCell", forIndexPath: indexPath) as! PreviewHeaderCollectionReusableView
+            if let currentCollection = data.objectAtIndex(indexPath.section) as? PHAssetCollection {
+                let startDateString: String = currentCollection.startDate == nil ? "" : _formatDate(currentCollection.startDate!)
+                let endDateString: String = currentCollection.endDate == nil ? "" : _formatDate(currentCollection.endDate!)
+                let collectionName = currentCollection.localizedLocationNames.count > 0 ? currentCollection.localizedLocationNames.first : currentCollection.localizedTitle
+                if let collectionName = collectionName {
+                    headerView.title = startDateString.isEmpty || endDateString.isEmpty ? collectionName : "\(collectionName) (\(startDateString) - \(endDateString))"
+                } else {
+                    headerView.title = startDateString.isEmpty || endDateString.isEmpty ? "Moment" : "\(startDateString) - \(endDateString)"
+                }
+            }
+            
+            return headerView
+        }
+        
+        let reusableView: UICollectionReusableView! = nil
+        return reusableView
     }
 
     // MARK: UICollectionViewDelegate
@@ -121,11 +153,22 @@ class PreviewCollectionViewController: UICollectionViewController {
             guard let targetVC = segue.destinationViewController as? BrowseCollectionViewController else {return}
             guard let cell = sender as? PreviewPhotoCollectionViewCell else {return}
             guard let indexPath = collectionView?.indexPathForCell(cell) else {return}
-            targetVC.assetsCollection = assetsCollection
-            targetVC.startIndexPath = indexPath
+            if momentMode {
+                targetVC.assetsCollection = data.objectAtIndex(indexPath.section) as? PHAssetCollection
+                targetVC.startIndexPath = NSIndexPath(forRow: indexPath.row, inSection: 0)
+            } else {
+                targetVC.assetsCollection = assetsCollection
+                targetVC.startIndexPath = indexPath
+            }
         default:
             break
         }
+    }
+    
+    private func _formatDate(date: NSDate) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        return dateFormatter.stringFromDate(date)
     }
 
 }
@@ -135,14 +178,31 @@ class PreviewCollectionViewController: UICollectionViewController {
 extension PreviewCollectionViewController {
     
     private func _setupData() {
-        guard let assetsCollection = assetsCollection else {return}
-        
-        let fetchOptions = PHFetchOptions()
-        fetchOptions.sortDescriptors = [
-            NSSortDescriptor(key: "creationDate", ascending: true)
-        ]
-        data = PHAsset.fetchAssetsInAssetCollection(assetsCollection, options: fetchOptions)
-        print(data.count)
+        if momentMode {
+            let userMomentsOptions: PHFetchOptions = PHFetchOptions()
+            userMomentsOptions.predicate = NSPredicate(format: "estimatedAssetCount > 0", argumentArray: nil)
+            let userMoments: PHFetchResult = PHAssetCollection.fetchAssetCollectionsWithType(PHAssetCollectionType.Moment, subtype: PHAssetCollectionSubtype.AlbumRegular, options: userMomentsOptions)
+            data = userMoments
+            
+            var subDataCache: [PHFetchResult] = [PHFetchResult]()
+            data.enumerateObjectsUsingBlock({ (collection, index, stop) -> Void in
+                let fetchOptions = PHFetchOptions()
+                fetchOptions.sortDescriptors = [
+                    NSSortDescriptor(key: "creationDate", ascending: true)
+                ]
+                subDataCache.append( PHAsset.fetchAssetsInAssetCollection(collection as! PHAssetCollection, options: fetchOptions) )
+            })
+            subData = subDataCache
+            
+        } else {
+            guard let assetsCollection = assetsCollection else {return}
+            
+            let fetchOptions = PHFetchOptions()
+            fetchOptions.sortDescriptors = [
+                NSSortDescriptor(key: "creationDate", ascending: true)
+            ]
+            data = PHAsset.fetchAssetsInAssetCollection(assetsCollection, options: fetchOptions)
+        }
     }
 }
 

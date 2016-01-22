@@ -11,6 +11,8 @@ import Photos
 
 class AlbumListTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var previewImageView2: UIImageView!
+    @IBOutlet weak var previewImageView1: UIImageView!
     @IBOutlet weak var previewImageView0: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
@@ -20,6 +22,9 @@ class AlbumListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        previewImageView0.clipsToBounds = true
+        previewImageView1.clipsToBounds = true
+        previewImageView2.clipsToBounds = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -43,6 +48,18 @@ class AlbumListTableViewCell: UITableViewCell {
     var previewImage0: UIImage = UIImage() {
         didSet {
             previewImageView0.image = previewImage0
+        }
+    }
+    
+    var previewImage1: UIImage = UIImage() {
+        didSet {
+            previewImageView1.image = previewImage1
+        }
+    }
+    
+    var previewImage2: UIImage = UIImage() {
+        didSet {
+            previewImageView2.image = previewImage2
         }
     }
 

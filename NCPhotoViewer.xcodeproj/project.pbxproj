@@ -19,6 +19,7 @@
 		652B38891C5138C8007F89E1 /* BrowseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B38881C5138C8007F89E1 /* BrowseCollectionViewCell.swift */; };
 		652B388B1C5138F6007F89E1 /* BrowseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B388A1C5138F6007F89E1 /* BrowseCollectionViewController.swift */; };
 		652B388E1C5144F9007F89E1 /* BrowsePhotoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B388D1C5144F9007F89E1 /* BrowsePhotoDelegate.swift */; };
+		652B38901C520502007F89E1 /* PreviewHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652B388F1C520502007F89E1 /* PreviewHeaderCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		652B38881C5138C8007F89E1 /* BrowseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseCollectionViewCell.swift; sourceTree = "<group>"; };
 		652B388A1C5138F6007F89E1 /* BrowseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseCollectionViewController.swift; sourceTree = "<group>"; };
 		652B388D1C5144F9007F89E1 /* BrowsePhotoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowsePhotoDelegate.swift; sourceTree = "<group>"; };
+		652B388F1C520502007F89E1 /* PreviewHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				652B38821C511D61007F89E1 /* AlbumListTableViewCell.swift */,
 				652B38861C512C6D007F89E1 /* PreviewPhotoCollectionViewCell.swift */,
 				652B38881C5138C8007F89E1 /* BrowseCollectionViewCell.swift */,
+				652B388F1C520502007F89E1 /* PreviewHeaderCollectionReusableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				652B38901C520502007F89E1 /* PreviewHeaderCollectionReusableView.swift in Sources */,
 				652B38891C5138C8007F89E1 /* BrowseCollectionViewCell.swift in Sources */,
 				652B38871C512C6D007F89E1 /* PreviewPhotoCollectionViewCell.swift in Sources */,
 				652B388B1C5138F6007F89E1 /* BrowseCollectionViewController.swift in Sources */,
