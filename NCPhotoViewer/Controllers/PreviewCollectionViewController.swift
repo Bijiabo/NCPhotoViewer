@@ -40,6 +40,12 @@ class PreviewCollectionViewController: UICollectionViewController {
 
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = true
+        
+        // scroll to latest photo
+        let latestSectionIndex = momentMode ? (data.count > 1 ? data.count - 1 : 0) : 0
+        let latestRowIndex = momentMode ? (subData.isEmpty ? 0 : (subData.last!.count > 1 ? subData.last!.count - 1 : 0)) : (data.count > 1 ? data.count - 1 : 0)
+        let latestIndexPath = NSIndexPath(forRow: latestRowIndex, inSection: latestSectionIndex)
+        collectionView?.scrollToItemAtIndexPath(latestIndexPath, atScrollPosition: UICollectionViewScrollPosition.Bottom, animated: false)
     }
 
     override func didReceiveMemoryWarning() {
